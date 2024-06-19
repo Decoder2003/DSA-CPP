@@ -3,24 +3,17 @@ using namespace std;
 
 class TreeNode{
     public:
-        int data;
-        TreeNode* left;
-        TreeNode* right;
+        int val;
+        TreeNode *left, *right;
 
-    TreeNode(int data){
-        this->data = data;
-        this->left = this->right = nullptr;
+    TreeNode(int val){
+        this->val = val;
+        this->left = this->right = NULL;
     }
 };
 
-class BuildTree{
-    TreeNode* root;
-
-    TreeNode* 
-
-}
-
-
 int main(){
+    TreeNode root;
+    root.val =  
     return 0;
 }
