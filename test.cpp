@@ -1,36 +1,48 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
-class Solution
+vector<vector<int>> getSubArrays(vector<int> nums)
 {
-public:
-    void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
+    int n = nums.size();
+    vector<vector<int>> subArrays;
+    for (int i = 0; i < n; i++)
     {
-        for (int i = m; i < m + n; i++)
+        for (int j = i; j < n; j++)
         {
-            nums1[i] = nums2[i - m];
+            vector<int> subArray;
+            for (int k = i; k <= j; k++)
+            {
+                subArray.push_back(nums[k]);
+            }
+            subArrays.push_back(subArray);
         }
-        sort(nums1.begin(), nums1.end());
     }
+    return subArrays;
 };
 
 int main()
 {
-    vector<int> nums1 = {1, 2, 3, 0, 0, 0};
-    vector<int> nums2 = {2, 5, 6};
+    vector<int> nums = {2, 4, 6, 8};
+    vector<vector<int>> subArrays = getSubArrays(nums);
 
-    int m = 3;
-    int n = 3;
-
-    Solution solution;
-
-    solution.merge(nums1, m, nums2, n);
-    for (int i = 0; i < m + n; i++)
+    vector<int> avgSubArrays;
+    int n = subArrays.size();
+    for (int i = 0; i < n; i++)
     {
-        cout << nums1[i] << " ";
+        int avg = 0;
+        for (int j = 0; j < subArrays[i].size(); j++)
+        {
+            avg += subArrays[i][j];
+        }
+        avg = avg / subArrays[i].size();
+        avgSubArrays.push_back(avg);
     }
-    cout << endl;
+
+    n = avgSubArrays.size();
+    for (int i = 0; i < n; i++)
+    {
+        cout << avgSubArrays[i] << endl;
+    }
     return 0;
 }
