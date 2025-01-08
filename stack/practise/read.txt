@@ -1,0 +1,8 @@
+# implement stack using queue
+
+lifo, fifo
+[1,2,3,4]
+
+pop() : in stack -> [1,2,3]
+    but in queue -> [2,3,4]
+    [1,2,3,4] pop() in queue then push() in new queue -> [1,2,3]
